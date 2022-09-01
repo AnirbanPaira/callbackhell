@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>callback hell</title>
+  </head>
+
+  <body>
+    <script>
+      const getRollNo = () => {
+        setTimeout(() => {
+          console.log("API GETTING ROLL NO.");
+          let roll_no = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+          console.log(roll_no);
+          setTimeout(
+            (rollno) => {
+              const biodata = {
+                name: "Vinod",
+                age: 45,
+              };
+              console.log(
+                `my name is ${biodata.name} and I am ${biodata.age} years old`
+              );
+
+              setTimeout(
+                (name) => {
+                  biodata.gender = "MAlE";
+                  console.log(
+                    `my name is ${biodata.name} and I am ${biodata.age} years old . My gender is ${biodata.gender}`
+                  );
+                },
+                2000,
+                biodata.name
+              );
+            },
+            2000,
+            roll_no[1]
+          );
+        }, 2000);
+      };
+      getRollNo();
+    </script>
+  </body>
+</html>
